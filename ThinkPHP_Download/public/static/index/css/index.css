@@ -1,0 +1,113 @@
+.fieled {
+    background-color: #f4f4f4;
+    background-repeat: no-repeat;
+    border-width: 0px;
+}
+.quit{
+    font-weight:bold;
+    margin-left:20px;
+    color:lime;
+}
+.login{
+    font-weight:bold;
+    margin-left:20px;
+    color:red;
+}
+.login:hover{
+    color:green;
+}
+.quit:hover{
+    color:red;
+}
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li:hover {
+    box-shadow: 5px 5px 13px #969696, -5px 5px 13px #969696;
+}
+
+.image {
+    float: left;
+    margin-top: 30px;
+    list-style-type: none;
+    margin-left: 2.7px;
+    margin-right: 33px;
+    width: 300px;
+    height: 350px;
+    background: #f9f9f9;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.main {
+    text-align: center;
+    width: 1050px;
+    height: 800px;
+    /* height: 1130px; */
+}
+
+img {
+    margin-top: 5px;
+    border-radius: 15px;
+    padding-right: 1px;
+    padding-left: 1px;
+    padding-top: 15px;
+    box-shadow: 3px 3px 3px #969696, -3px 3px 3px #969696;
+}
+.pagelist{
+    text-align:center;
+}
+
+.title>b {
+    display: block;
+    margin-top: 5px;
+}
+.title>b:hover{
+    color:rgb(0,175,233);
+}
+.legend {
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+    background: rgb(241, 228, 35);
+    border-radius: 5px;
+    font-size:50px;
+    font-family:"黑体";
+    text-shadow: 1px 1px 1px grey;
+}
+.footer{
+    width: 100%;
+    height: 100px;
+    margin-top:20px;
+    line-height: 100px;
+    background-color: white;
+    border-radius: 5px;
+}
+.nav {
+    display: block;
+    height: 100px;
+    width: 100%;
+    line-height: 30px;
+    color: lime;
+    font-weight: bold;
+
+}
+
+.nav .user {
+    color: red;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+header img {
+    width: 1050px;
+    height: 420px;
+    padding-top: 0px;
+    cursor: pointer;
+    box-shadow: 0px;
+}
