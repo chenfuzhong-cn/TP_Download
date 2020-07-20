@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download</title>
+    <script src="/static/index/js/pay.js"></script>
+    <script src="/static/index/js/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="/static/index/css/pay.css">
+    <script>
+        $(function(){
+            $('#index').slideDown('slow');
+        });
+    </script>
+</head>
+<body>
+    <div class="contain">
+        <nav class="nav">
+           <a href="{:url('index')}" class="quit" style="text-decoration:none;padding-left:20px;font-weight:bold;">返回首页</a>
+        </nav>
+        <iframe src="{$data['link']}" frameborder="0" scrolling="no" id="index" style="display:none;"></iframe>
+            
+        <div class="right">
+            <div class="fetch">
+                <h3>提取码</h3><br>
+                <input type="text" name="fcode" value="{$data['fcode']}" readonly>
+            </div>
+            <div class="money">
+                <br><span>听说点赞的人都是帅哥美女</span>
+                <font id="goods_g">赞赏</font>
+                <img src="/static/img/money_code.jpg" id="alipay_a" style="display:none;">
+                <img src=" /static/img/money_code_alipay.jpg" id="WeChat_w" style="display:none;">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

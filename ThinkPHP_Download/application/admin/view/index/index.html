@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粽子网后台</title>
+    <link rel="stylesheet" href="/static/admin/css/admin.css">
+    <link rel="stylesheet" href="/static/admin/css/bootstrap.min.css">
+    <script src="/static/admin/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/admin/js/admin.js"></script>
+</head>
+<body>
+    <div id="main">
+        <!--left-->
+        <div class="left">
+            <div class="self">
+                <div id="person">
+                    <img src="/static/img/composer.jpg">
+                    <div class="selfMsg">
+                        {if(session('?username'))}
+                        <span class="admin">{:session('username')}</span>
+                        {/if}
+                        <br>
+                        <span class="admin">后台管理员</span>
+                        <ul id="quit">
+                            <li><a href="{:url('logout')}">退出</a></li>
+                            <li><a href="{:url('index')}">前台首页</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div><!--//left-->
+        <!-- right -->
+        <div class="right">
+             <nav id="nav">
+                粽 子 网 后 台
+             </nav>
+             <a href="/soft/create"><span id="item">添加项目</span></a>
+             <br>
+             <div class="container" >   
+                 <table class="table table-hover">
+                     <thead>
+                         <tr>
+                             <th>ID</th>
+                             <th>title</th>
+                             <th>imagesrc</th>
+                             <th>fcode</th>
+                             <th>link</th>
+                             <th>操作</th>
+                         </tr>
+                     </thead>
+                     <tbody id="tbody">
+                        
+                     </tbody>
+                 </table>
+             </div>
+             <div id="pager"></div>
+            </div><!--//right-->
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>登录</title>
+    <link href="/static/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/admin/css/font-awesome.css" rel="stylesheet">
+    <link href="/static/admin/css/animate.css" rel="stylesheet">
+    <link href="/static/admin/css/style.css" rel="stylesheet">
+
+    <script>
+    if(window.top !== window.self){ window.top.location = window.location;}
+    </script>
+</head>
+
+<body class="gray-bg">
+    <a href="{:url('index')}" style="margin-left:20px;">返回首页</a>
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+                <h1 class="logo-name">粽</h1>
+            </div>
+            <h3></h3>
+            <form class="m-t" role="form"  method="POST" action="{:url('index/login/loginSave')}?id={$id}">
+                {:token()}
+                <div class="form-group">
+                    <input type="text" name="username" class="form-control" placeholder="用户名" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="密码" required="">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="vcode"  class="form-control" placeholder="验证码" required="" style="width:149px;height:38px;">
+                    <img src="{:captcha_src()}" id="vcode" style="cursor:pointer;width: 149px;height:38px;float:right;margin-top:-38px;">
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="/static/admin/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script>
+        $(function(){
+        $('#vcode').click(function(){
+            let src = $(this).attr('src');
+            $(this).attr('src',src);
+        });
+    });
+    </script>
+</body>
+</html>

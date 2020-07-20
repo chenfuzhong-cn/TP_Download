@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粽子网</title>
+    <link rel="stylesheet" href="/static/index/css/index.css">
+    <script src="/static/index/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/index/js/box.js"></script>
+    <script>
+        $(function () {
+            var r = Math.floor(Math.random() * 240);
+            var g = Math.floor(Math.random() * 232);
+            var b = Math.floor(Math.random() * 253);
+            var color = function () { $('.legend').css('color', 'rgb(' + r + ',' + g + ',' + b + ')') };
+            setInterval(color, 500);
+
+            $('ul').slideDown(500);
+            $('li').css('background-color', 'white');
+            // 无刷新分页
+            $(".pagination a").click(function () {
+                var url = $(this).attr('href');
+                $.ajax({
+                    'type': 'post',
+                    'url': url,
+                    success: function (data) {
+                        $('body').html(data);
+                    }
+                })
+                return false;
+            });
+            // 搜索
+            $("#btn").click(function () {
+                var res = $('#s').val();
+                if (res) {
+                    $.ajax({
+                        type: 'post',
+                        data: res,
+                        url: 'index/index/index',
+                        success: function (data) {
+                            $('body').html(data);
+                        }
+                    });
+                }
+                return false;
+            });
+            // 跳转
+            $('.himg').click(function () {
+                window.open("https://www.chenfuzhong.club");
+            });
+            $('.blog').click(function () {
+                window.open("https://www.chenfuzhong.club");
+            });
+
+
+            //边栏
+            $('#left').box({ left: 'right', top: 'center' });
+        });
+    </script>
+    <style>
+        .blog {
+            display: block;
+            margin-top: -40px;
+            color: white;
+            cursor: pointer;
+            font-size: 25px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px black;
+        }
+
+        .blog:hover {
+            color: red;
+        }
+
+        .search {
+            margin-top: 40px;
+
+        }
+
+        .search #s {
+            padding: 6px 10px;
+            border-radius: 2px;
+            border-width: 0;
+
+        }
+
+        .search #btn {
+            background-color: #1ab394;
+            border-width: 0;
+            color: #FFFFFF;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .search #btn:hover {
+            background-color: teal;
+        }
+
+
+        /*边栏*/
+        #left {
+            border-radius:3px;
+            border: solid 1px #ccc;
+            width: 200px;
+            height: 150px;
+            position: absolute;
+            display: none;
+
+        }
+
+        #left>.title_side {
+            height: 40px;
+            line-height: 40px;
+            background: pink;
+            color: white;
+            text-align: center;
+        }
+
+        #left>.title_side>span {
+            float: right;
+            color: white;
+            padding-right: 10px;
+            cursor: pointer;
+        }
+
+        .content {
+            text-align: center;
+            background-color: white;
+            text-indent: 20px;
+            color:red;
+        }
+
+        .content .if {
+            width: 200px;
+            height: 100px;
+
+        }
+    </style>
+</head>
+
+<body bgcolor="#f4f4f4">
+    <nav class="nav">
+        {if $Request.session.username}
+        <a href="{:url('logout')}" class="quit">不玩了，退出</a>
+        {else/}
+        <a href="{:url('login')}" class="login">亲，你还没登录喔</a>
+        {/if}
+        |
+        {if $Request.session.username}
+        亲爱的<b class="user"> {$Request.session.username} </b>欢迎您回来
+        {else/}
+        欢迎来访
+        {/if}
+    </nav>
+    <fieldset align="center" class="fieled">
+        <legend class="legend">欢迎来到粽子下载网 </legend><br>
+        <center>
+            <header>
+                <img src="/static/img/index.jpg" class="himg" title="博客专区"><br>
+                <span class="blog">博客专区</span>
+                <div class="search">
+                    <input type="text" name="search" placeholder="找点..." id="s">
+                    <input type="button" value="搜索" id="btn">
+                </div>
+            </header>
+            <!-- main -->
+            <div class="main">
+                <ul>
+                    {foreach $data as $value}
+                    <li class="image">
+                        <a href="{:url('download')}?id={$value['id']}" class="title"><b>{$value['title']}<b></a>
+                        <a id="img_a" href="{:url('download')}?id={$value['id']}"><img src="{$value['imagesrc']}"
+                                width="285" height="250"></a>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div><!--// main -->
+            
+            <!-- 分页 -->
+            {$data|raw}
+            <!--side-->
+            <div id="left">
+                <div class="title_side">&nbsp;&nbsp;今日音乐<span>x</span></div>
+                <div class="content">
+                        <font>命运它无法让我们<br>跪地求饶</font>
+                    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" class="if"
+                        src="//music.163.com/outchain/player?type=2&id=1450524364&auto=0&height=100"></iframe>
+                </div>
+            </div>
+            <!--//side-->
+            <div class="footer">
+                <span>
+                    ChenFuZhong © 2020 🚓 粤ICP备20005719号
+                </span>
+            </div>
+        </center>
+
+    </fieldset>
+</body>
+
+</html>
